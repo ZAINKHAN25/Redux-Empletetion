@@ -8,7 +8,6 @@ function App() {
     const dispatch = useDispatch();
 
     const updatecounter = () => {
-        console.log("updatecounter");
         dispatch(changesidebar());
     };
 

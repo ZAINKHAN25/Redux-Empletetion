@@ -23,3 +23,13 @@ body{
   min-height: 100vh;
   overflow-x: hidden;
 }
+
+.sideimg{
+  width: 70px;
+  height: 70px;
+  margin: 10px 0;
+  object-fit: cover;
+  border-radius: 50%;
+  background-color: grey;
+  padding: 2px;
+}

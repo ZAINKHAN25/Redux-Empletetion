@@ -1,18 +1,16 @@
 import { useEffect, useState } from "react";
 import './App.css';
-import { useSelector } from "react-redux";
 import { addCounter } from './store/Slices/addToCart.js'
+import { addMainArray } from './store/Slices/alldata.js'
 import { useDispatch } from "react-redux";
 
 function App() {
-
-    const { addtocardarr } = useSelector((state) => state);
     const dispatch = useDispatch();
 
     const updatecounter = (index) => {
-        console.log("updatecounter");
         dispatch(addCounter(index));
     };
+    
 
 
     let [allData, setallData] = useState([])
@@ -22,6 +20,7 @@ function App() {
             .then(res => res.json())
             .then(json => {
                 setallData(json)
+                dispatch(addMainArray(json));
             })
     }, [])
     return (
@@ -33,10 +32,10 @@ function App() {
                         <div className="card-body">
                             <h5 className="card-title">{x.title}</h5>
                             <p className="card-text">{x.description.slice(0, 30)}....</p>
-                            <a href="#" className="btn btn-primary" onClick={()=>updatecounter(i)}>Click me to add me to the cart</a>
+                            <a className="btn btn-primary" id={`${i}btn`} onClick={() => updatecounter(i)}>Click me to add me to the cart</a>
                         </div>
                     </div>
-                    )
+                )
             })}
         </div>
     )

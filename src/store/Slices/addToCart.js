@@ -8,9 +8,9 @@ const counterSlice = createSlice({
   name: "addtocounter",
   reducers: {
     addCounter: (state = initialState, action) => {
-      state.addtocardarr = state.addtocardarr.push(action.payload);
-      console.log("state", state.addtocardarr);
-      console.log("action", action.payload);
+      const arr = state.addtocardarr;
+      const secondarr = [...arr,action.payload]
+      state.addtocardarr = secondarr;
     },
   },
   initialState,
